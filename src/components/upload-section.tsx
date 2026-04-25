@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { UploadCloud, FileAudio, Loader2 } from "lucide-react";
+import { UploadCloud } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -40,6 +40,7 @@ export function UploadSection({ onUploadSuccess }: UploadSectionProps) {
 
     try {
       // Validate duration (client-side)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
       const arrayBuffer = await file.arrayBuffer();
       const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
@@ -78,9 +79,9 @@ export function UploadSection({ onUploadSuccess }: UploadSectionProps) {
       toast.success("Audio transcribed successfully!");
       onUploadSuccess();
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
-      toast.error(error.message || "An error occurred during upload.");
+      toast.error((error as Error).message || "An error occurred during upload.");
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) {

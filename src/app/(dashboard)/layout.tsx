@@ -29,7 +29,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
 
-  const SidebarContent = () => (
+  const sidebarContent = (
     <div className="flex flex-col h-full bg-white border-r border-slate-200">
       <div className="p-6">
         <h2 className="text-2xl font-bold tracking-tight text-slate-900">AudioDash</h2>
@@ -63,14 +63,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Menu className="h-5 w-5" />
           </SheetTrigger>
           <SheetContent side="left" className="p-0 w-72">
-            <SidebarContent />
+            {sidebarContent}
           </SheetContent>
         </Sheet>
       </div>
 
       {/* Desktop Sidebar */}
       <div className="hidden md:block w-64 fixed inset-y-0">
-        <SidebarContent />
+        {sidebarContent}
       </div>
 
       {/* Main Content */}
