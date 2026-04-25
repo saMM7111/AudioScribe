@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "lint": "eslint",
     "db:push": "dotenv -e .env -- drizzle-kit push",
     "db:studio": "drizzle-kit studio",
