@@ -17,9 +17,7 @@ const MIME_TYPE_MAP: Record<string, string> = {
   "audio/m4a":    "audio/mp4",
 };
 
-export const config = {
-  api: { bodyParser: { sizeLimit: "15mb" } }
-};
+
 
 export async function POST(req: Request) {
   try {
